@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">GithubPesquisa</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <form class="form-inline my-2 my-lg-0">
+      <input name="nome" class="form-control mr-sm-2" type="search" placeholder="Digite o nome do Usuário" [(ngModel)]="usuario">
+      <button class="btn btn-outline-success my-2 my-sm-0" (click)="buscarUsuario()">Buscar</button>
+    </form>
+  </div>
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+
+      <div *ngIf="validaPerfil == true">
+
+        <div class="card">
+          <div class="card-header">
+            {{perfis.nome}}
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4">
+                <img class="github-avatar img-thumbnail" src="{{perfis.imagemPerfil}}">
+                <br /> {{perfis.bio}}
+              </div>
+              <div class="col-md-8">
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    <strong>Usuário:</strong> {{usuario}}
+                  </li>
+                  <li class="list-group-item" *ngIf="perfis.email == null">
+                    <strong>E-mail:</strong> Indisponível
+                  </li>
+                  <li class="list-group-item" *ngIf="perfis.email != null">
+                    <strong>E-mail:</strong> {{perfis.email}}
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Seguindo:</strong> {{perfis.seguindo}}
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Seguidores</strong> {{perfis.seguidores}}
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
