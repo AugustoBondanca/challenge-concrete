@@ -5,4 +5,8 @@ export class Perfil {
     seguindo: number;
     email: string;
     imagemPerfil: string;
+    repositorios: number
+}
+export class Repositorio {
+    nome: string;
 }

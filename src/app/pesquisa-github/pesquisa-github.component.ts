@@ -37,6 +37,7 @@ export class PesquisaGithubComponent {
       this.perfis.seguindo = res.json().following;
       this.perfis.seguidores = res.json().followers;
       this.perfis.imagemPerfil = res.json().avatar_url;
+      this.perfis.repositorios = res.json().public_repos;
       this.validaPerfil = true;
       console.log(this.perfis)
     });

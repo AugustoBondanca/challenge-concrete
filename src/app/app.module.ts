@@ -8,20 +8,23 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { PesquisaGithubComponent } from './pesquisa-github/pesquisa-github.component';
+import { RepositorioComponent } from './repositorio/repositorio.component';
+import { routing } from './app.routing';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PesquisaGithubComponent
-
+    PesquisaGithubComponent,
+    RepositorioComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule
+    RouterModule,
+    routing
   ],
   providers: [],
   bootstrap: [AppComponent]

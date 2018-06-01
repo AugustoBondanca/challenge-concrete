@@ -1,3 +1,15 @@
 .navbar-light .navbar-brand {
     margin-left: 400px;
 }
+.card {
+    position: absolute;
+    top: 30px;
+}
+.nav {
+    position: absolute;
+    top: 5px;
+    right: 375px;
+}
+.list-group-item:hover {
+    margin: 0 0 10px 0;
+}
