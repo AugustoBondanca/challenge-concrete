@@ -6,7 +6,6 @@ import { Observable } from 'rxjs/Rx';
 import { PesquisaGithubService } from './pesquisa-github.service';
 import { BoundCallbackObservable } from 'rxjs/observable/BoundCallbackObservable';
 
-
 @Component({
   selector: 'app-pesquisa-github',
   templateUrl: './pesquisa-github.component.html',
@@ -16,33 +15,32 @@ import { BoundCallbackObservable } from 'rxjs/observable/BoundCallbackObservable
 export class PesquisaGithubComponent {
 
   perfis: Perfil
-  getUsuario: string = 'https://api.github.com/users/'
   validaPerfil: boolean = false;
   usuario: string;
 
 
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private pesquisaGithubService: PesquisaGithubService) {
     this.perfis = new Perfil;
+
   }
 
   public buscarUsuario() {
-    let url = this.getUsuario + this.usuario;
 
-    this.http.get(url).subscribe((res) => {
-      console.log(res.json())
-      this.perfis.nome = res.json().name;
-      this.perfis.bio = res.json().bio;
-      this.perfis.email = res.json().email;
-      this.perfis.seguindo = res.json().following;
-      this.perfis.seguidores = res.json().followers;
-      this.perfis.imagemPerfil = res.json().avatar_url;
-      this.perfis.repositorios = res.json().public_repos;
+    this.pesquisaGithubService.getUsuario(this.usuario).subscribe(data => {
+      console.log('user returned of service', data);
+
+      this.perfis.nome = data.name;
+      this.perfis.bio = data.bio;
+      this.perfis.email = data.email;
+      this.perfis.seguindo = data.following;
+      this.perfis.seguidores = data.followers;
+      this.perfis.imagemPerfil = data.avatar_url;
+      this.perfis.repositorios = data.public_repos;
       this.validaPerfil = true;
-      console.log(this.perfis)
+      console.log('profile', this.perfis)
+    })
 
-
-    });
   }
 
 }
