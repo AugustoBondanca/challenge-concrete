@@ -22,7 +22,7 @@ export class PesquisaGithubComponent {
 
 
 
-  constructor(private http: Http, private pesquisaService: PesquisaGithubService) {
+  constructor(private http: Http) {
     this.perfis = new Perfil;
   }
 
@@ -40,6 +40,8 @@ export class PesquisaGithubComponent {
       this.perfis.repositorios = res.json().public_repos;
       this.validaPerfil = true;
       console.log(this.perfis)
+
+
     });
   }
 

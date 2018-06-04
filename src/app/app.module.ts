@@ -26,7 +26,7 @@ import { routing } from './app.routing';
     RouterModule,
     routing
   ],
-  providers: [],
+  providers: [PesquisaGithubComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

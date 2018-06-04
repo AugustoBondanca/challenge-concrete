@@ -12,11 +12,4 @@ export class PesquisaGithubService {
     console.log('Serviço de busca Challenge-concrete está ativo..');
   }
 
-  getUsuario() {
-    return this.http.get('https://api.github.com/users/' + this.pesquisas.perfis.nome)
-      .subscribe((res) => {
-        console.log(res.json())
-
-      })
-  }
 }
