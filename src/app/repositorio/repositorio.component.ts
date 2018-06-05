@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Http, Response, RequestOptions, Headers, HttpModule } from '@angular/http'
 import { Observable } from 'rxjs/Rx';
 
+import { DetalheRepositorioComponent } from '../detalhe-repositorio/detalhe-repositorio.component';
+
 import { PesquisaGithubService } from '../pesquisa-github/pesquisa-github.service';
 import { RepositorioService } from './repositorio.service';
-import { DetalheRepositorioComponent } from '../detalhe-repositorio/detalhe-repositorio.component';
+import { DetalheRepositorioService } from '../detalhe-repositorio/detalhe-repositorio.service';
 
 @Component({
   selector: 'app-repositorio',
@@ -17,11 +19,17 @@ export class RepositorioComponent implements OnInit {
   repositorios = [];
   nomeCompleto: string;
   repositorioService: RepositorioService;
-  detalheComponent: DetalheRepositorioComponent
+  detalheComponent: DetalheRepositorioComponent;
+  detalheService: DetalheRepositorioService;
 
-  constructor(private http: Http, private pesquisaService: PesquisaGithubService) {
+  constructor(
+    private http: Http,
+    private pesquisaService: PesquisaGithubService,
+  ) {
+
     this.repositorioService = new RepositorioService(http);
-    this.detalheComponent = new DetalheRepositorioComponent();
+    this.detalheComponent = new DetalheRepositorioComponent(http);
+    this.detalheService = new DetalheRepositorioService(http);
   }
 
   ngOnInit() {
@@ -32,7 +40,9 @@ export class RepositorioComponent implements OnInit {
     });
   }
   escolheRepositorio(nomeCompleto) {
-    this.nomeCompleto = nomeCompleto;
-    // this.repositorioService.getNomeCompleto(this.nomeCompleto);
+    this.detalheService.getDetailsPerRepositoryName(nomeCompleto).subscribe(data => {
+
+      console.log('retorno do serviço' + data);
+    })
   }
 }

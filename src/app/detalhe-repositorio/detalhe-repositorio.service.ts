@@ -7,10 +7,13 @@ import 'rxjs/add/operator/do';
 
 @Injectable()
 export class DetalheRepositorioService {
-
+  public urlApi = 'https://api.github.com/repos/';
 
   constructor(private http: Http) { }
 
-
-
+  getDetailsPerRepositoryName(nomeCompleto) {
+    return this.http.get(this.urlApi + nomeCompleto).map(data => {
+      console.log('details returned of service' + data.json());
+    })
+  }
 }

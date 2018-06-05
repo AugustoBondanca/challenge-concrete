@@ -21,7 +21,7 @@
 
         <div class="card">
           <div class="card-header">
-            {{perfis.nome}}
+            {{recebePerfil.name}}
           </div>
           <ul class="nav">
             <li class="nav-item">
@@ -31,28 +31,28 @@
           <div class="card-body">
             <div class="row">
               <div class="col-md-4">
-                <img class="github-avatar img-thumbnail" src="{{perfis.imagemPerfil}}">
-                <br /> {{perfis.bio}}
+                <img class="github-avatar img-thumbnail" src="{{recebePerfil.avatar_url}}">
+                <br /> {{recebePerfil.bio}}
               </div>
               <div class="col-md-8">
                 <ul class="list-group">
                   <li class="list-group-item">
                     <strong>Usuário:</strong> {{usuario}}
                   </li>
-                  <li class="list-group-item" *ngIf="perfis.email == null">
+                  <li class="list-group-item" *ngIf="recebePerfil.email == null">
                     <strong>E-mail:</strong> Indisponível
                   </li>
-                  <li class="list-group-item" *ngIf="perfis.email != null">
-                    <strong>E-mail:</strong> {{perfis.email}}
+                  <li class="list-group-item" *ngIf="recebePerfil.email != null">
+                    <strong>E-mail:</strong> {{recebePerfil.email}}
                   </li>
                   <li class="list-group-item">
-                    <strong>Seguindo:</strong> {{perfis.seguindo}}
+                    <strong>Seguindo:</strong> {{recebePerfil.following}}
                   </li>
                   <li class="list-group-item">
-                    <strong>Seguidores</strong> {{perfis.seguidores}}
+                    <strong>Seguidores</strong> {{recebePerfil.followers}}
                   </li>
                   <li class="list-group-item">
-                    <strong>Repositórios</strong> {{perfis.repositorios}}
+                    <strong>Repositórios</strong> {{recebePerfil.public_repos}}
                   </li>
                 </ul>
               </div>

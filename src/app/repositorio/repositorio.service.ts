@@ -21,6 +21,5 @@ export class RepositorioService {
   getNomeCompleto(nomeCompleto) {
     this.recebeNomecompleto = nomeCompleto;
     this.nomeSource.next(this.recebeNomecompleto);
-    return
   }
 }
