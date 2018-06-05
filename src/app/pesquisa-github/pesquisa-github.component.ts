@@ -22,7 +22,6 @@ export class PesquisaGithubComponent {
 
   constructor(private http: Http, private pesquisaGithubService: PesquisaGithubService) {
     this.perfis = new Perfil;
-
   }
 
   public buscarUsuario() {
@@ -38,7 +37,6 @@ export class PesquisaGithubComponent {
       this.perfis.imagemPerfil = data.avatar_url;
       this.perfis.repositorios = data.public_repos;
       this.validaPerfil = true;
-      console.log('profile', this.perfis)
     })
 
   }

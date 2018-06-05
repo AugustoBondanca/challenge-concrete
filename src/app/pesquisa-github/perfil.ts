@@ -7,6 +7,3 @@ export class Perfil {
     imagemPerfil: string;
     repositorios: number
 }
-export class Repositorio {
-    nome: string;
-}

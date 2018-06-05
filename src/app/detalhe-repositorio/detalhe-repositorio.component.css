@@ -1,0 +1,11 @@
+.navbar-light .navbar-brand {
+    margin-left: 400px;
+}
+.card {
+    top: 30px;
+}
+.nav {
+    position: absolute;
+    top: 5px;
+    right: 375px;
+}

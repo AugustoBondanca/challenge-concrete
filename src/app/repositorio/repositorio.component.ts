@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Http, Response, RequestOptions, Headers, HttpModule } from '@angular/http'
-import { DetalheRepositorio } from './detalhe-repositorio';
 import { Observable } from 'rxjs/Rx';
+
+import { PesquisaGithubService } from '../pesquisa-github/pesquisa-github.service';
+import { RepositorioService } from './repositorio.service';
+import { DetalheRepositorioComponent } from '../detalhe-repositorio/detalhe-repositorio.component';
 
 @Component({
   selector: 'app-repositorio',
@@ -10,37 +13,26 @@ import { Observable } from 'rxjs/Rx';
 })
 export class RepositorioComponent implements OnInit {
 
-  apiRepositorios: string = 'https://api.github.com/users/AugustoBondanca/repos';
-  apiDetalhes: string = 'https://api.github.com/repos/'
-
-  detalhesRepositorio: DetalheRepositorio;
+  usuario: string;
   repositorios = [];
-  nomeRepositorio: string;
+  nomeCompleto: string;
+  repositorioService: RepositorioService;
+  detalheComponent: DetalheRepositorioComponent
 
-  constructor(private http: Http) {
-    this.detalhesRepositorio = new DetalheRepositorio;
-
+  constructor(private http: Http, private pesquisaService: PesquisaGithubService) {
+    this.repositorioService = new RepositorioService(http);
+    this.detalheComponent = new DetalheRepositorioComponent();
   }
 
   ngOnInit() {
-    let url = this.apiRepositorios;
-
-
-    this.http.get(url).subscribe((res) => {
-      console.log(res.json())
-      this.repositorios = res.json();
-
-
+    this.usuario = this.pesquisaService.recebeUsuario;
+    this.repositorioService.getRepositorio(this.usuario).subscribe(data => {
+      console.log('repositories returned of service', data)
+      this.repositorios = data;
     });
-
   }
-
-  detalhes(nomeRepositorio) {
-    let url = this.apiDetalhes + nomeRepositorio;
-
-    this.http.get(url).subscribe((res) => {
-      console.log(res.json())
-    })
+  escolheRepositorio(nomeCompleto) {
+    this.nomeCompleto = nomeCompleto;
+    // this.repositorioService.getNomeCompleto(this.nomeCompleto);
   }
-
 }

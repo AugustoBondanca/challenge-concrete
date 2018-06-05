@@ -21,7 +21,9 @@
           <p class="card-text">Repositório sem descrição.</p>
         </div>
         <br />
-        <button class="btn btn-outline-success my-2 my-sm-0" (click)="detalhes(item.full_name)">Ver detalhes</button>
+        <a [routerLink]="['/detalhes']">
+          <button class="btn btn-outline-success my-2 my-sm-0" (click)="EscolheRepositorio(item.full_name)">Ver detalhes</button>
+        </a>
       </div>
     </div>
   </div>

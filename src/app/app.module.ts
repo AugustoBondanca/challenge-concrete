@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { PesquisaGithubComponent } from './pesquisa-github/pesquisa-github.component';
 import { RepositorioComponent } from './repositorio/repositorio.component';
 import { routing } from './app.routing';
+import { DetalheRepositorioComponent } from './detalhe-repositorio/detalhe-repositorio.component';
 
 
 
@@ -18,6 +19,7 @@ import { routing } from './app.routing';
     AppComponent,
     PesquisaGithubComponent,
     RepositorioComponent,
+    DetalheRepositorioComponent,
   ],
   imports: [
     BrowserModule,
