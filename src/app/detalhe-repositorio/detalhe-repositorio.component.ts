@@ -11,17 +11,18 @@ import { DetalheRepositorioService } from './detalhe-repositorio.service';
   styleUrls: ['./detalhe-repositorio.component.css']
 })
 export class DetalheRepositorioComponent implements OnInit {
+
   detalheService: DetalheRepositorioService;
-  detalhesRepositorio: any;
-  nomeRepositorio: string;
+  detalhes: any;
+  nomeCompleto: string;
 
-
-  constructor(http: Http) {
+  constructor(private http: Http) {
     this.detalheService = new DetalheRepositorioService(http);
   }
 
   ngOnInit() {
 
+    //aqui eu preciso chamar a api de detalhes com o valor do nome passado pelo component.
   }
 
 }

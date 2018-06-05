@@ -40,9 +40,8 @@ export class RepositorioComponent implements OnInit {
     });
   }
   escolheRepositorio(nomeCompleto) {
-    this.detalheService.getDetailsPerRepositoryName(nomeCompleto).subscribe(data => {
-
-      console.log('retorno do serviço' + data);
-    })
+    this.nomeCompleto = nomeCompleto;
+    //aqui eu preciso enviar o valor do nomecompleto para o detalhe-repositorio.component.ts, 
+    //so deve chamar a api no detalherepositorio.component.ts
   }
 }
