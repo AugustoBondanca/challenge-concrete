@@ -18,18 +18,12 @@ export class RepositorioComponent implements OnInit {
   usuario: string;
   repositorios = [];
   nomeCompleto: string;
-  repositorioService: RepositorioService;
-  detalheComponent: DetalheRepositorioComponent;
-  detalheService: DetalheRepositorioService;
 
   constructor(
     private http: Http,
     private pesquisaService: PesquisaGithubService,
-  ) {
-
-    this.repositorioService = new RepositorioService(http);
-    this.detalheComponent = new DetalheRepositorioComponent(http);
-    this.detalheService = new DetalheRepositorioService(http);
+    private repositorioService: RepositorioService,
+    private detalheService: DetalheRepositorioService) {
   }
 
   ngOnInit() {

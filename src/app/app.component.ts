@@ -3,12 +3,19 @@ import { PesquisaGithubComponent } from './pesquisa-github/pesquisa-github.compo
 
 import { PesquisaGithubService } from './pesquisa-github/pesquisa-github.service';
 import { HttpModule } from '@angular/http'
+import { DetalheRepositorioService } from './detalhe-repositorio/detalhe-repositorio.service';
+import { RepositorioService } from './repositorio/repositorio.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [PesquisaGithubService, HttpModule, PesquisaGithubComponent]
+  providers: [
+    PesquisaGithubService,
+    DetalheRepositorioService,
+    RepositorioService,
+    HttpModule,
+    PesquisaGithubComponent]
 })
 export class AppComponent {
   title = 'app';

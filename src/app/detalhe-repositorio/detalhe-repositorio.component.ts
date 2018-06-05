@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Rx';
 
 import { RepositorioService } from '../repositorio/repositorio.service';
 import { DetalheRepositorioService } from './detalhe-repositorio.service';
+import { RepositorioComponent } from '../repositorio/repositorio.component';
 
 @Component({
   selector: 'app-detalhe-repositorio',
@@ -12,12 +13,12 @@ import { DetalheRepositorioService } from './detalhe-repositorio.service';
 })
 export class DetalheRepositorioComponent implements OnInit {
 
-  detalheService: DetalheRepositorioService;
   detalhes: any;
   nomeCompleto: string;
 
-  constructor(private http: Http) {
-    this.detalheService = new DetalheRepositorioService(http);
+  constructor(
+    private http: Http) {
+
   }
 
   ngOnInit() {
