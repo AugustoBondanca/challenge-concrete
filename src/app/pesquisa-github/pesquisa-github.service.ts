@@ -20,7 +20,6 @@ export class PesquisaGithubService {
   getUsuario(usuario) {
     this.recebeUsuario = usuario;
     this.usuarioSource.next(this.recebeUsuario);
-
     return this.http.get(this.urlApi + usuario).map(data => data.json());
   }
 

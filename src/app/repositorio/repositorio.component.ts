@@ -17,7 +17,8 @@ export class RepositorioComponent implements OnInit {
 
   usuario: string;
   repositorios = [];
-  nomeCompleto: string;
+  nomeCompleto: any;
+  todosDetalhes: any;
 
   constructor(
     private http: Http,
@@ -35,6 +36,10 @@ export class RepositorioComponent implements OnInit {
   }
   escolheRepositorio(nomeCompleto) {
     this.nomeCompleto = nomeCompleto;
+    this.repositorioService.getDetailsPerRepositoryName(this.nomeCompleto).subscribe(data => {
+      this.todosDetalhes = data;
+      console.log(this.todosDetalhes)
+    });
     //aqui eu preciso enviar o valor do nomecompleto para o detalhe-repositorio.component.ts, 
     //so deve chamar a api no detalherepositorio.component.ts
   }

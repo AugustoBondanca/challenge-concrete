@@ -5,6 +5,7 @@ import { PesquisaGithubService } from './pesquisa-github/pesquisa-github.service
 import { HttpModule } from '@angular/http'
 import { DetalheRepositorioService } from './detalhe-repositorio/detalhe-repositorio.service';
 import { RepositorioService } from './repositorio/repositorio.service';
+import { RepositorioComponent } from './repositorio/repositorio.component';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ import { RepositorioService } from './repositorio/repositorio.service';
     DetalheRepositorioService,
     RepositorioService,
     HttpModule,
-    PesquisaGithubComponent]
+    PesquisaGithubComponent,
+    RepositorioComponent]
 })
 export class AppComponent {
   title = 'app';

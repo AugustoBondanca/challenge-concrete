@@ -8,18 +8,21 @@ import 'rxjs/add/operator/do';
 @Injectable()
 export class RepositorioService {
 
-  recebeNomecompleto: string;
+  recebeDetalhe: any;
+  DetalheSource = new BehaviorSubject<any>(this.recebeDetalhe);
   public urlApiRepo = 'https://api.github.com/users/';
-  nomeSource = new BehaviorSubject<string>(this.recebeNomecompleto);
+  public urlApiDetalhe = 'https://api.github.com/repos/';
 
   constructor(private http: Http) { }
 
   getRepositorio(usuario) {
     return this.http.get(this.urlApiRepo + usuario + '/repos').map(data => data.json());
   }
-
-  getNomeCompleto(nomeCompleto) {
-    this.recebeNomecompleto = nomeCompleto;
-    this.nomeSource.next(this.recebeNomecompleto);
+  getDetalhe(todosDetalhes) {
+    this.recebeDetalhe = todosDetalhes;
+    this.DetalheSource.next(this.recebeDetalhe);
+  }
+  getDetailsPerRepositoryName(nomeCompleto) {
+    return this.http.get(this.urlApiDetalhe + nomeCompleto).map(data => data.json());
   }
 }
