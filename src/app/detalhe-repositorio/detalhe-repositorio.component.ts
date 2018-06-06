@@ -14,20 +14,22 @@ import { RepositorioComponent } from '../repositorio/repositorio.component';
 })
 export class DetalheRepositorioComponent implements OnInit {
 
-  @Input() recebeNome;
 
   nomeCompleto: string;
+  dadosDetalhe: string;
 
   constructor(
     private http: Http,
     private detalheService: DetalheRepositorioService,
-    private repositorioComponent: RepositorioComponent) {
+    private repositorioService: RepositorioService) {
 
+    this.repositorioService.onGetData.subscribe((data) => {
+      this.dadosDetalhe = data;
+      console.log(this.dadosDetalhe);
+    })
   }
 
   ngOnInit() {
-    console.log(this.recebeNome);
-    //aqui eu preciso chamar a api de detalhes com o valor do nome passado pelo component.
   }
 
 }

@@ -4,6 +4,7 @@ import { Observable, BehaviorSubject } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
+import { EventEmitter } from '@angular/core';
 
 @Injectable()
 export class RepositorioService {
@@ -12,6 +13,8 @@ export class RepositorioService {
   DetalheSource = new BehaviorSubject<any>(this.recebeDetalhe);
   public urlApiRepo = 'https://api.github.com/users/';
   public urlApiDetalhe = 'https://api.github.com/repos/';
+
+  onGetData = new EventEmitter()
 
   constructor(private http: Http) { }
 
@@ -23,6 +26,9 @@ export class RepositorioService {
     this.DetalheSource.next(this.recebeDetalhe);
   }
   getDetailsPerRepositoryName(nomeCompleto) {
-    return this.http.get(this.urlApiDetalhe + nomeCompleto).map(data => data.json());
+    return this.http.get(this.urlApiDetalhe + nomeCompleto).map((data) => {
+      this.onGetData.emit(data.json());
+      data.json()
+    });
   }
 }

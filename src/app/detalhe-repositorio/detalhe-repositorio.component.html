@@ -13,23 +13,29 @@
 
       <div class="card">
         <div class="card-header">
-          Nome
+          <strong>Nome</strong> - {{dadosDetalhe.name}}
         </div>
         <div class="card-body">
           <div class="row">
-            <div class="col-md-4">
-              <br /> Descrição
+            <div class="col-md-4" *ngIf="dadosDetalhe.description != null">
+              <br /> Descrição:
+              <br /> {{dadosDetalhe.description}}
+            </div>
+            <div class="col-md-4" *ngIf="dadosDetalhe.description == null">
+              <br /> Descrição: Sem descrição
             </div>
             <div class="col-md-8">
+              <br />
               <ul class="list-group">
                 <li class="list-group-item">
-                  <strong>Estrelas:</strong>
+                  <strong>Estrelas:</strong> {{dadosDetalhe.stargazers_count}}
                 </li>
                 <li class="list-group-item">
-                  <strong>Linguagem:</strong>
+                  <strong>Linguagem:</strong> {{dadosDetalhe.language}}
                 </li>
                 <li class="list-group-item">
                   <strong>Link Github:</strong>
+                  <a href="{{dadosDetalhe.html_url}}">clique aqui</a>
                 </li>
               </ul>
             </div>

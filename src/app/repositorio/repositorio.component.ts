@@ -40,7 +40,5 @@ export class RepositorioComponent implements OnInit {
       this.todosDetalhes = data;
       console.log(this.todosDetalhes)
     });
-    //aqui eu preciso enviar o valor do nomecompleto para o detalhe-repositorio.component.ts, 
-    //so deve chamar a api no detalherepositorio.component.ts
   }
 }
